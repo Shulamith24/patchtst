@@ -8,7 +8,7 @@ fi
 seq_len=336
 model_name=PatchTST
 
-root_path_name=./dataset/
+root_path_name=./data/ETT/
 data_path_name=ETTh1.csv
 model_id_name=ETTh1
 data_name=ETTh1
