@@ -50,6 +50,19 @@ if __name__ == '__main__':
     parser.add_argument('--kernel_size', type=int, default=25, help='decomposition-kernel')
     parser.add_argument('--individual', type=int, default=0, help='individual head; True 1 False 0')
 
+    # AnyResPatchTST (Multi-Scale Patch Configuration)
+    parser.add_argument('--patch_scales', type=str, default='8,16,32', 
+                        help='Multi-scale patch lengths, comma separated (e.g., "8,16,32")')
+    parser.add_argument('--use_global_token', type=int, default=1, 
+                        help='Use global token (thumbnail); True 1 False 0')
+    parser.add_argument('--cross_scale_layers', type=int, default=2, 
+                        help='Number of cross-scale attention layers')
+    parser.add_argument('--cross_scale_fusion', type=str, default='attention', 
+                        choices=['attention', 'concat', 'weighted_sum'],
+                        help='Cross-scale fusion method')
+    parser.add_argument('--share_encoder', type=int, default=1, 
+                        help='Share encoder across scales; True 1 False 0')
+
     # Formers 
     parser.add_argument('--embed_type', type=int, default=0, help='0: default 1: value embedding + temporal embedding + positional embedding 2: value embedding + temporal embedding 3: value embedding + positional embedding 4: value embedding')
     parser.add_argument('--enc_in', type=int, default=7, help='encoder input size') # DLinear with --individual, use this hyperparameter as the number of channels
